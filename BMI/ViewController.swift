@@ -35,8 +35,9 @@ class ViewController: UIViewController {
         }
         
         let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
-        //        TODO: Verify type of BMI
-        let alert = UIAlertController(title: "Result", message: "Your BMI is \(bmiResult)", preferredStyle: .alert)
+        let resultMessage = verifyBMI(bmiResult)
+        
+        let alert = UIAlertController(title: "\(resultMessage)", message: "Your BMI is \(bmiResult)", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
@@ -50,5 +51,14 @@ class ViewController: UIViewController {
         return weight / pow(height, 2.0)
     }
     
+    func verifyBMI(_ bmi: Double) -> String {
+        if bmi > 25 {
+            return "Overweight"
+        } else if 18.5 ... 25 ~= bmi {
+            return "Normal weight"
+        } else {
+            return "Underweight"
+        }
+    }
 }
 
