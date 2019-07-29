@@ -36,10 +36,10 @@ class ViewController: UIViewController {
         
         let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
         let resultMessage = verifyBMI(bmiResult)
+        let bmiResultFormated = String(format: "Your BMI is %.2f", bmiResult)
+        let alert = UIAlertController(title: "\(resultMessage)", message: bmiResultFormated, preferredStyle: .alert)
         
-        let alert = UIAlertController(title: "\(resultMessage)", message: "Your BMI is \(bmiResult)", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         
         alert.addAction(action)
         
