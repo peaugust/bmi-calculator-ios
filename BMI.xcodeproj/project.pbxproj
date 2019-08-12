@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C69632702301DE1D005A6FB7 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696326F2301DE1D005A6FB7 /* ResultViewController.swift */; };
 		C6C7AA3422E792D3005BDAC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C7AA3322E792D3005BDAC3 /* AppDelegate.swift */; };
 		C6C7AA3622E792D3005BDAC3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C7AA3522E792D3005BDAC3 /* ViewController.swift */; };
 		C6C7AA3922E792D3005BDAC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C7AA3722E792D3005BDAC3 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C696326F2301DE1D005A6FB7 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		C6C7AA3022E792D3005BDAC3 /* BMI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C7AA3322E792D3005BDAC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C7AA3522E792D3005BDAC3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				C6C7AA3322E792D3005BDAC3 /* AppDelegate.swift */,
 				C6C7AA3522E792D3005BDAC3 /* ViewController.swift */,
+				C696326F2301DE1D005A6FB7 /* ResultViewController.swift */,
 				C6C7AA3722E792D3005BDAC3 /* Main.storyboard */,
 				C6C7AA3A22E792D4005BDAC3 /* Assets.xcassets */,
 				C6C7AA3C22E792D4005BDAC3 /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				C6C7AA3622E792D3005BDAC3 /* ViewController.swift in Sources */,
 				C6C7AA3422E792D3005BDAC3 /* AppDelegate.swift in Sources */,
+				C69632702301DE1D005A6FB7 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

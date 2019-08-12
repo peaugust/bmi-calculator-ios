@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var weightInput: UITextField!
     @IBOutlet weak var heightInput: UITextField!
+    @IBOutlet weak var calculateButton: UIButton!
     
     // MARK: - Properties
     
@@ -28,40 +29,37 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weightPicker.dataSource = self
-        weightPicker.delegate = self
-        weightInput.inputView = weightPicker
-        heightPicker.dataSource = self
-        heightPicker.delegate = self
-        heightInput.inputView = heightPicker
+        setupPickers()
+        setupButton()
     }
     
     @IBAction func didTapBMIButton() {
         
-        guard let weight = weightInput.text,
-            let height = heightInput.text,
-            let weightConverted = Double(weight),
-            let heightConverted = Double(height) else {
-                let alert = UIAlertController(title: "Result", message: "Fields must be filled", preferredStyle: .alert)
-                
-                let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                
-                alert.addAction(action)
-                
-                present(alert, animated: true, completion: nil)
-                return
-        }
+//        guard let weight = weightInput.text,
+//            let height = heightInput.text,
+//            let weightConverted = Double(weight),
+//            let heightConverted = Double(height) else {
+//                let alert = UIAlertController(title: "Result", message: "Fields must be filled", preferredStyle: .alert)
+//
+//                let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+//
+//                alert.addAction(action)
+//
+//                present(alert, animated: true, completion: nil)
+//                return
+//        }
         
-        let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
-        let resultMessage = verifyBMI(bmiResult)
-        let bmiResultFormated = String(format: "Your BMI is %.2f", bmiResult)
-        let alert = UIAlertController(title: "\(resultMessage)", message: bmiResultFormated, preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+//        let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
+//        let resultMessage = verifyBMI(bmiResult)
+//        let bmiResultFormated = String(format: "Your BMI is %.2f", bmiResult)
+        pushViewController()
+//        let alert = UIAlertController(title: "\(resultMessage)", message: bmiResultFormated, preferredStyle: .alert)
+//
+//        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+//
+//        alert.addAction(action)
+//
+//        present(alert, animated: true, completion: nil)
         
     }
     
@@ -79,6 +77,28 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: Navigation
+    
+    private func pushViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as UIViewController
+        self.navigationController?.pushViewController(resultVC, animated: true)
+    }
+    
+    // MARK: Setup
+    
+    func setupButton () {
+        calculateButton.layer.cornerRadius = 8
+    }
+    
+    func setupPickers () {
+        weightPicker.dataSource = self
+        weightPicker.delegate = self
+        weightInput.inputView = weightPicker
+        heightPicker.dataSource = self
+        heightPicker.delegate = self
+        heightInput.inputView = heightPicker
+    }
 }
 
 // MARK: UIPickerViewDataSource
