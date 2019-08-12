@@ -10,12 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var weightInput: UITextField!
     @IBOutlet weak var heightInput: UITextField!
     
+    // MARK: - Properties
+    
+    let weightData: [Int] = Array(0...200)
+    let weightPicker = UIPickerView()
+    
+    let heightMetersData: [Int] = Array(0...4)
+    let heightCentimetersData: [Int] = Array(0...99)
+    let heightPicker = UIPickerView()
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        weightPicker.dataSource = self
+        weightPicker.delegate = self
+        weightInput.inputView = weightPicker
+        heightPicker.dataSource = self
+        heightPicker.delegate = self
+        heightInput.inputView = heightPicker
     }
     
     @IBAction func didTapBMIButton() {
@@ -60,5 +78,48 @@ class ViewController: UIViewController {
             return "Underweight"
         }
     }
+    
 }
 
+// MARK: UIPickerViewDataSource
+
+extension ViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if pickerView == heightPicker {
+            return 2
+        }
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == heightPicker {
+            if component == 0 {
+                return heightMetersData.count
+            }
+            return heightCentimetersData.count
+        }
+        return weightData.count
+    }
+}
+
+extension ViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == heightPicker {
+            if component == 0 {
+                return "\(heightMetersData[row])"
+            }
+            return "\(heightCentimetersData[row])"
+        }
+        return "\(weightData[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == heightPicker {
+            let selectedMetersRow = heightPicker.selectedRow(inComponent: 0)
+            let selectedCentimetersRow = heightPicker.selectedRow(inComponent: 1)
+            heightInput.text = "\(heightMetersData[selectedMetersRow]).\(heightCentimetersData[selectedCentimetersRow])"
+        } else {
+            weightInput.text = "\(weightData[row])"
+        }
+    }
+}
