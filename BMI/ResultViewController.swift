@@ -9,10 +9,19 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    @IBOutlet weak var resultMessageLabel: UILabel!
+    @IBOutlet weak var resultTextField: UITextField!
+    @IBAction func didTapCalculateAgain(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    var message: String = ""
+    var result: Double = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        resultMessageLabel.text = message
+        resultTextField.text = String(result)
         // Do any additional setup after loading the view.
     }
     
