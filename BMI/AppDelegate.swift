@@ -17,11 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainVC = storyboard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
-        let navigationController = UINavigationController(rootViewController: mainVC)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            window.rootViewController = navigationController
+            window.rootViewController = mainVC
             window.makeKeyAndVisible()
         }
         return true
