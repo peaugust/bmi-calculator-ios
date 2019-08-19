@@ -65,7 +65,7 @@ class ViewController: UIViewController {
     
     func verifyBMI(_ bmi: Double) -> String {
         if bmi > 25 {
-            return "Overweight"
+            return "You are overweight"
         } else if 18.5 ... 25 ~= bmi {
             return "Normal weight"
         } else {
