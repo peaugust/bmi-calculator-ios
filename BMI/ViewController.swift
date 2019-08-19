@@ -75,10 +75,12 @@ class ViewController: UIViewController {
     
     // MARK: Navigation
     
-    private func pushViewController() {
+    private func presentResult(message: String, result: Double) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as UIViewController
-        self.navigationController?.pushViewController(resultVC, animated: true)
+        let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+        resultVC.message = message
+        resultVC.result = result
+        self.present(resultVC, animated: true, completion: nil)
     }
     
     // MARK: Setup
