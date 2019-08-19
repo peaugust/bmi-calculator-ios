@@ -33,34 +33,30 @@ class ViewController: UIViewController {
         setupButton()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func didTapBMIButton() {
         
-//        guard let weight = weightInput.text,
-//            let height = heightInput.text,
-//            let weightConverted = Double(weight),
-//            let heightConverted = Double(height) else {
-//                let alert = UIAlertController(title: "Result", message: "Fields must be filled", preferredStyle: .alert)
-//
-//                let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-//
-//                alert.addAction(action)
-//
-//                present(alert, animated: true, completion: nil)
-//                return
-//        }
+        guard let weight = weightInput.text,
+            let height = heightInput.text,
+            let weightConverted = Double(weight),
+            let heightConverted = Double(height) else {
+                let alert = UIAlertController(title: "Result", message: "Fields must be filled", preferredStyle: .alert)
+
+                let action = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+
+                alert.addAction(action)
+
+                present(alert, animated: true, completion: nil)
+                return
+        }
         
-//        let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
-//        let resultMessage = verifyBMI(bmiResult)
-//        let bmiResultFormated = String(format: "Your BMI is %.2f", bmiResult)
-        pushViewController()
-//        let alert = UIAlertController(title: "\(resultMessage)", message: bmiResultFormated, preferredStyle: .alert)
-//
-//        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-//
-//        alert.addAction(action)
-//
-//        present(alert, animated: true, completion: nil)
-        
+        let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
+        let resultMessage = verifyBMI(bmiResult)
+        presentResult(message: resultMessage, result: bmiResult)
+
     }
     
     func calcBMI(weight: Double, height: Double) -> Double {
