@@ -7,26 +7,23 @@
 //
 
 import UIKit
+import BubbleTransition
 
 class ViewController: UIViewController {
     
     // MARK: IBOutlets
-    
     @IBOutlet weak var weightInput: UITextField!
     @IBOutlet weak var heightInput: UITextField!
     @IBOutlet weak var calculateButton: UIButton!
     
     // MARK: - Properties
-    
     let weightData: [Int] = Array(0...200)
     let weightPicker = UIPickerView()
-    
     let heightMetersData: [Int] = Array(0...4)
     let heightCentimetersData: [Int] = Array(0...99)
     let heightPicker = UIPickerView()
     
     // MARK: - Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPickers()
@@ -38,7 +35,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapBMIButton() {
-        
         guard let weight = weightInput.text,
             let height = heightInput.text,
             let weightConverted = Double(weight),
@@ -52,7 +48,6 @@ class ViewController: UIViewController {
                 present(alert, animated: true, completion: nil)
                 return
         }
-        
         let bmiResult = calcBMI(weight: weightConverted, height: heightConverted)
         let resultMessage = verifyBMI(bmiResult)
         presentResult(message: resultMessage, result: bmiResult)
@@ -77,7 +72,9 @@ class ViewController: UIViewController {
     
     private func presentResult(message: String, result: Double) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
+        guard let resultVC = storyboard.instantiateViewController(withIdentifier: "ResultViewController") as? ResultViewController else {
+            return
+        }
         resultVC.message = message
         resultVC.result = result
         self.present(resultVC, animated: true, completion: nil)

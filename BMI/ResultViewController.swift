@@ -14,7 +14,7 @@ class ResultViewController: UIViewController {
     @IBAction func didTapCalculateAgain(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     var message: String = ""
     var result: Double = 0.0
     
