@@ -24,7 +24,6 @@ class ResultViewController: UIViewController {
         resultTextField.text = String(result)
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
