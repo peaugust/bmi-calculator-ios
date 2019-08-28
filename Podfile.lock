@@ -1,0 +1,20 @@
+PODS:
+  - BubbleTransition (3.2.0)
+  - SwiftLint (0.34.0)
+
+DEPENDENCIES:
+  - BubbleTransition (~> 3.2.0)
+  - SwiftLint (~> 0.34)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BubbleTransition
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  BubbleTransition: 2f112cc19772d9ab199bc850de92f5eb34744bce
+  SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
+
+PODFILE CHECKSUM: ddee95517e6dc707677c45e8f6bc6e0224dcd29a
+
+COCOAPODS: 1.7.5
